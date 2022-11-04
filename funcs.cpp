@@ -2,8 +2,7 @@
 #include "funcs.h"
 #include <vector>
 #include <cmath>
-#include <algorithm>
-#include <cctype>
+using namespace std;
 
 //from lab 6
 char shiftChar(char c, int rshift){
@@ -41,7 +40,7 @@ vector<double> countFrequencies(string encrypted_string){
                 index = (int)(encrypted_string[i]) - 65;
             else //lowercase
                 index = (int)(encrypted_string[i]) - 97;
-            
+
             frequencies[index] += 1;
         }
     }
@@ -71,10 +70,10 @@ string solve(string encrypted_string){
         rotated = decryptCaesar(encrypted_string, i);
         curr_frequencies = countFrequencies(rotated);
         double distance = 0.0;
-    
+
     for(int j = 0; j < 26; j++)
         distance += pow((curr_frequencies[j] - english_frequencies[j]) , 2);
-    
+
 
         if(closest == 0.0){
             closest = distance;
